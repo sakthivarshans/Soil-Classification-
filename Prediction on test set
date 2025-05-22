@@ -1,0 +1,5 @@
+#Predict on Test Set
+test_images = load_images(test_ids['image_id'], TEST_DIR)
+predictions = model.predict(test_images)
+predicted_labels = np.argmax(predictions, axis=1)
+predicted_soil_types = le.inverse_transform(predicted_labels)

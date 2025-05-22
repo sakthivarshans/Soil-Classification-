@@ -1,0 +1,13 @@
+#Load CSVs
+df = pd.read_csv(LABELS_CSV)
+test_ids = pd.read_csv(TEST_IDS_CSV)
+
+# Encode labels into numbers
+le = LabelEncoder()
+df['label'] = le.fit_transform(df['soil_type'])
+
+# One-hot encode labels
+labels = to_categorical(df['label'])
+
+# Split into train and validation sets
+train_ids, val_ids, train_labels, val_labels = train_test_split(df['image_id'], labels, test_size=0.2, random_state=42)

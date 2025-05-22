@@ -1,0 +1,5 @@
+#Submission File using test_ids
+submission = test_ids.copy()  
+submission['soil_type'] = predicted_soil_types  
+submission.to_csv("submission.csv", index=False)
+submission.head()

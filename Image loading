@@ -1,0 +1,13 @@
+#Image loading function
+def load_images(image_ids, directory):
+    images = []
+    for img_id in image_ids:
+        path = os.path.join(directory, img_id)
+        image = cv2.imread(path)
+        image = cv2.resize(image, IMAGE_SIZE)
+        images.append(image)
+    return np.array(images)
+
+# Load training and validation images
+X_train = load_images(train_ids, TRAIN_DIR)
+X_val = load_images(val_ids, TRAIN_DIR)
